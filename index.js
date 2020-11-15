@@ -28,10 +28,42 @@ app.get('/', (req, res, next) => {
 
 app.post('/update', async(req, res, next) => {
     var time = req.body.time;
+    var timeunit = req.body.timeunit;
     if (time) {
+        if (time > 1) {
+            switch (timeunit) {
+                case 'hour':
+                    time = `for ${time} hours`
+                    break;
+                case 'min':
+                    time = `for ${time} minutes`
+                    break;
+                case 'day':
+                    time = `for ${time} days`
+                    break;
+                default:
+                    time = `for 1 hour`
+                    break;
+            }
+        } else {
+            switch (timeunit) {
+                case 'hour':
+                    time = `for 1 hour`
+                    break;
+                case 'min':
+                    time = `for 1 minute`
+                    break;
+                case 'day':
+                    time = `for 1 day`
+                    break;
+                default:
+                    time = `for 1 hour`
+                    break;
+            }
+        }
         await RPC('start', time, false, '');
     } else {
-        await RPC('start', 1, false, '');
+        await RPC('start', 'for 1 hour', false, '');
     }
     res.redirect('/');
 });
@@ -63,22 +95,16 @@ async function RPC(action, time, joinable, partyDetail) {
             client.reply(user, 'IGNORE');
         }
     });
-    var detail = 'for 1 hour';
-    if (time > 1) {
-        detail = `for ${time} hours`;
-    }
+   
 
     if (action == 'start') {
-        var detail = 'for 1 hour';
-        if (time > 1) {
-            detail = `for ${time} hours`;
-        }
+       
 
         client.on('connected', () => {
             console.log('connected!');
             client.updatePresence({
                 //state: 'something', //<- party size shows here
-                details: detail,
+                details: time,
                 //startTimestamp: Date.now(),
                 //endTimestamp: Date.now() + 99999999,
                 largeImageKey: 'logo_new',

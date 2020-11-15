@@ -8,7 +8,11 @@
 <body class="bg-dark">
 <h1>VALORANT RPC</h1>
 <form method="POST" action="/update">
-     <label>Time: </label><input type="number" name="time"><br>
+     <label>Time: </label><input type="number" name="time"><select name="timeunit">
+         <option value="hour">Hour(s)</option>
+         <option value="min">Minute(s)</option>
+         <option value="day">Day(s)</option>
+     </select><br>
 <button type="submit" class="submit-btn">Start</button>
 </form>
 <br><br>
