@@ -1,0 +1,10 @@
+:root {
+    background-color: #0F1923;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #fb4453;
+}
+
+.submit-btn {
+    border: #fb4453;
+}
