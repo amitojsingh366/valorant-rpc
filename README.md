@@ -4,9 +4,9 @@ This is a simple command line program that shows a [Discord Rich Presence](https
 I made this cause i saw a few of my friends trying to fake play VALORANT for whatever reason. So yeah this is for them lol
 
 ## How To Run
-- 
-
-  
+- Download the binary for you platform from the latest [Release](https://github.com/amitojsingh366/valorant-rpc/releases)
+- Run the binary from a command line
+- Visit [http://localhost:6969](http://localhost:6969)
 
 # License
 valorant-rpc is licensed under the MIT License.
